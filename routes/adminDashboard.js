@@ -2,18 +2,91 @@ var express = require("express");
 var router = express.Router();
 var db = require("../connection");
 
-router.get("/courses", function (req, res, next) {
+router.get("/showStudent", function (req, res, next) {
     db.query(
-        "SELECT course_id,course_name,credits,COUNT(student_id) AS count FROM course NATURAL JOIN offers NATURAL JOIN takes WHERE instructor_id=? GROUP BY course_id",
+        "SELECT student_id,fname,lname FROM student",
         [req.session.username],
         function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {
-                res.render("instructorCourse", { layout: false, data: results });
+                res.render("showStudent", { layout: false, data: results });
             }
         }
     );
+});
+router.get("/newStudent", function (req, res, next) {
+    res.render("newStudent", { layout: false });
+});
 
+router.post("/newStudent", function (req, res, next) {
+    const student_id = parseInt(req.body.student_id);
+    const password = req.body.fname + "@" + req.body.instructor_id;
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const street = req.body.street;
+    const state = req.body.state;
+    const pincode = parseInt(req.body.pincode);
+    db.query(
+        "INSERT INTO student SET student_id=?, password=?, fname=?, lname=?, street=?, state=?, pincode=?",
+        [student_id, password, fname, lname, street, state, pincode],
+        function (error, results, fields) {
+            if (error) throw error;
+            else {
+                res.render("adminDashboard", { layout: false});
+                console.log("Inserted In Student");
+            }
+        }
+    );
+});
+
+router.get("/showInstructor", function (req, res, next) {
+    db.query(
+        "SELECT instructor_id,fname,lname FROM instructor",
+        [req.session.username],
+        function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                res.render("showInstructor", { layout: false, data: results });
+            }
+        }
+    );
+});
+
+router.get("/newInstructor", function (req, res, next) {
+    res.render("newInstructor", { layout: false });
+});
+
+router.post("/newInstructor", function (req, res, next) {
+    const instructor_id = parseInt(req.body.instructor_id);
+    const password = req.body.fname + "@" + req.body.instructor_id;
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    db.query(
+        "INSERT INTO instructor SET instructor_id=?, password=?, fname=?, lname=?, email=?, phone=?",
+        [instructor_id, password, fname, lname, email, phone],
+        function (error, results, fields) {
+            if (error) throw error;
+            else {
+                res.render("adminDashboard", { layout: false});
+                console.log("Inserted In instructor");
+            }
+        }
+    );
+});
+
+router.get("/showCourse", function (req, res, next) {
+    db.query(
+        "SELECT course_id,course_name FROM course",
+        [req.session.username],
+        function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                res.render("showCourse", { layout: false, data: results });
+            }
+        }
+    );
 });
 
 router.get("/newCourse", function (req, res, next) {
@@ -21,71 +94,26 @@ router.get("/newCourse", function (req, res, next) {
 });
 
 router.post("/newCourse", function (req, res, next) {
-    const course_id = req.body.course_id;
-    const course_name = req.body.course_name;
-    const course_description = req.body.course_description;
-    const credits = req.body.credits;
+    const instructor_id = parseInt(req.body.instructor_id);
+    const password = req.body.fname + "@" + req.body.instructor_id;
+    const fname = req.body.fname;
+    const lname = req.body.lname;
+    const email = req.body.email;
+    const phone = req.body.phone;
     db.query(
-        "INSERT INTO course SET course_id = ?, course_name=?, course_description=?,credits=?",
-        [course_id, course_name, course_description, credits],
+        "INSERT INTO instructor SET instructor_id=?, password=?, fname=?, lname=?, email=?, phone=?",
+        [instructor_id, password, fname, lname, email, phone],
         function (error, results, fields) {
             if (error) throw error;
             else {
-                // res.render("studentCourseContent", { layout: false, data: results });
-                console.log("Inserted In course");
-            }
-        }
-    );
-    db.query(
-        "INSERT INTO offers SET course_id = ?, instructor_id=?",
-        [course_id, req.session.username],
-        function (error, results, fields) {
-            if (error) throw error;
-            else{
-                res.render("instructorDashboard", { layout: false});
-                console.log("Inserted In offers");
+                res.render("adminDashboard", { layout: false});
+                console.log("Inserted In instructor");
             }
         }
     );
 });
 
-router.get("/grading", function (req, res, next) {
-    db.query(
-        "SELECT course_id,course_name,performance FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NOT NULL",
-        [req.session.username],
-        function (error, results, fields) {
-            if (error) throw error;
-            if (results.length > 0) {
-                res.render("studentPastCourse", { layout: false, data: results });
-            }
-        }
-    );
-});
-router.get("/feeds", function (req, res, next) {
-    db.query(
-        "SELECT course_id,course_name,performance FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NOT NULL",
-        [req.session.username],
-        function (error, results, fields) {
-            if (error) throw error;
-            if (results.length > 0) {
-                res.render("studentPastCourse", { layout: false, data: results });
-            }
-        }
-    );
-});
 
-router.post("/content", function (req, res, next) {
-    db.query(
-        "SELECT course_id,course_name,course_description,credits FROM course WHERE course_id=?",
-        [req.body.course_id],
-        function (error, results, fields) {
-            if (error) throw error;
-            if (results.length > 0) {
-                res.render("studentCourseContent", { layout: false, data: results });
-            }
-        }
-    );
-});
 module.exports = router;
 
 //GET INPUT FILES

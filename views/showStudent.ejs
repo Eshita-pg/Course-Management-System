@@ -1,0 +1,39 @@
+<%- include("adminDashHeader") -%>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3" style="margin-left: 400px; margin-top: 50px; width: 500px;">
+                <table>
+
+                    <tr>
+
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+
+                    </tr>
+                    <% if(data.length> 0)
+                        {
+                        data.forEach(function(getData){
+                        %>
+                        <tr>
+                            <td>
+                                <%= getData.student_id %>
+                            </td>
+                            <td>
+                                <%= getData.fname %>
+                                    <%= getData.lname %>
+                            </td>
+                        </tr>
+                        <% }); } else { %>
+                            <tr>
+                                <td colspan="5">No Data Found</td>
+                            </tr>
+                            <% } %>
+
+                </table><br><br>
+                <form action="/adminDashboard/newStudent">
+                    <input type="submit" class="btn btn-primary" value="ADD Student">
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include("adminDashFooter") -%>
