@@ -1,0 +1,24 @@
+<%- include("studentDashHeader") -%>
+      
+
+             <div class="col offset-3"id="main" style="width: 75%;">
+                 <h1 style="width: 75%;">Your Courses</h1>
+                 <%  data.forEach(function(course){ %>
+                 <div class="card" style="width: 100%;">
+                  <div class="card-body" id="cardBg">
+                    <h5 class="card-title"><%= course.course_id %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= course.course_name %></h6>
+                    <form action="/studentDashboard/content" method="POST">
+                      <input type="text" value="<%= course.course_id %>" name="course_id" hidden>
+                      <input type="submit" value="Course Content">
+                    </form>
+                  </div>
+                </div>
+                <%  }); %>
+
+                
+             </div>
+         </div>
+     </div>
+      
+<%- include("studentDashFooter") -%>

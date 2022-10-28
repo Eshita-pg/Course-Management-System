@@ -1,0 +1,11 @@
+<%- include("studentDashHeader") -%>
+
+<div class="col offset-3" id="main" style="width: 75%;"><br><br>
+   <form action="/feedback/giveFeedback" method="POST">
+   <textarea type="text" name="feedbackText" style="width: 75%;height:100px;"></textarea> <br><br><br>
+   <input type="submit" class="btn btn-primary" value="Submit Feedback">
+</form>
+  </div>
+
+
+<%- include("studentDashFooter") -%>
