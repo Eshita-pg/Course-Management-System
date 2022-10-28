@@ -7,7 +7,10 @@ const studentRouter = require("./routes/studentLogin");
 const studentCourseRouter = require("./routes/studentDashboard");
 const session = require('express-session');
 const feedbackRouter = require("./routes/feedback");
-
+const instructorRouter = require("./routes/instructorLogin");
+const adminRouter = require("./routes/adminLogin");
+const instructorCourseRouter = require("./routes/instructorDashboard")
+const adminCourseRouter = require("./routes/adminDashboard")
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,6 +28,10 @@ app.use(express.static(__dirname + '/public'));
 app.use('/feedback',feedbackRouter);
 app.use('/studentDashboard',studentCourseRouter);
 app.use('/studentLogin', studentRouter);
+app.use('/adminLogin', adminRouter);
+app.use('/instructorDashboard',instructorCourseRouter);
+app.use('/adminDashboard',adminCourseRouter);
+app.use('/instructorLogin', instructorRouter);
 app.use('/', homeRouter);
 
 app.listen(3000);
