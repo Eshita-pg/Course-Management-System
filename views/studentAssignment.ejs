@@ -6,8 +6,8 @@
   <div class="card" style="width: 100%">
     <div class="card-body" id="cardBg">
       <h5 class="card-title"><%= assn.assignment_id %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= assn.grade %></h6>
-      <h5 class="card-text"><%= assn.course_id %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= assn.course_id %></h6>
+      <h5 class="card-text">Grade : <%= assn.grade %></h5>
       <% if(!assn.status) { %>
       <form action="/studentDashboard/getFile" method="POST">
       <label for="myfile">Select a file:</label>

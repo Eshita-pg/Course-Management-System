@@ -1,5 +1,5 @@
 <%- include("adminDashHeader") -%>
-    <div class="container">
+    <div class="container" style="margin-top:20px ;margin-left:450px;">
         <form action="/adminDashboard/newInstructor" method="POST">
         <label for="instructor_id"><b>Instructor ID</b></label>
         <input type="text" placeholder="Enter instructor ID" name="instructor_id" required>
@@ -24,5 +24,4 @@
         <input type="submit" value="Submit">
       </div>
     </form>
-</body>
-</html>
+    <%- include("adminDashFooter") -%>

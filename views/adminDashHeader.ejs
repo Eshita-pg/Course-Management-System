@@ -1,49 +1,52 @@
-<html lang = "en">
-   <head>
-      <!-- Meta tags -->
-      <meta charset = "utf-8">
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
-      <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
-      <!-- Bootstrap CSS -->
-      <link rel = "stylesheet" 
-         href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-         integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-         crossorigin = "anonymous">
-      
-      <title>Dashboard</title>
-   </head>
-   
-   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-         <a class="navbar-brand" href="/adminDashboard">Dashboard</a>
-             <a class="nav-item nav-link" href="/adminLogin/logout">Logout</a>
-           </div>
-         </div>
-       </nav>
+<html lang="en">
 
-       <div class="container-fluid">
-         <div class="row">
-             <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
-              <form action="/adminDashboard/showInstructor">
-                 <input type="submit" class="nav-item nav-link" value="Show Instructor"/>
-              </form>
-              <form action="/adminDashboard/showCourse">
-                <input type="submit" class="nav-item nav-link" value="Show Course"/>
-             </form>
-             <form action="/adminDashboard/showStudent">
-                <input type="submit" class="nav-item nav-link" value="Show Student"/>
-             </form>
-             <form action="/adminDashboard/assignStudentbyAdmin">
-               <input type="submit" class="nav-item nav-link" value="Assign Course For Student"/>
+<head>
+   <!-- Meta tags -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no" />
+   <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+   <style>
+      .button {
+         width: 80%;
+         margin-top: 20px;
+      }
+   </style>
+   <title>Dashboard</title>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+      <a class="navbar-brand" href="/adminDashboard">Dashboard</a>
+      <a class="nav-item nav-link" href="/adminLogin/logout">Logout</a>
+   </nav>
+
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
+            <form action="/adminDashboard/showInstructor">
+               <input type="submit" class="nav-item nav-link button" value="Show Instructor" />
+            </form>
+            <form action="/adminDashboard/showCourse">
+               <input type="submit" class="nav-item nav-link button" value="Show Course" />
+            </form>
+            <form action="/adminDashboard/showStudent">
+               <input type="submit" class="nav-item nav-link button" value="Show Student" />
+            </form>
+            <form action="/adminDashboard/assignStudentbyAdmin">
+               <input type="submit" class="nav-item nav-link button" value="Assign Course For Student" />
             </form>
             <form action="/adminDashboard/assignInstructor">
-               <input type="submit" class="nav-item nav-link" value="Assign Instructor to  New Course">
-           </form>
-             <form action="/adminDashboard/finalGrading">
-                <input type="submit" class="nav-item nav-link" value="Student Grading"/>
-             </form>
-             </div>
-             </div>
+               <input type="submit" class="nav-item nav-link button" value="Assign Instructor to  New Course" />
+            </form>
+            <form action="/adminDashboard/finalGrading">
+               <input type="submit" class="nav-item nav-link button" value="Student Grading" />
+            </form>
          </div>
-     </div>
-      
+      </div>
+   </div>
+</body>
+
+</html>

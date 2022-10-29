@@ -1,43 +1,46 @@
-<html lang = "en">
-   <head>
-      <!-- Meta tags -->
-      <meta charset = "utf-8">
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
-      <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
-      <!-- Bootstrap CSS -->
-      <link rel = "stylesheet" 
-         href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-         integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-         crossorigin = "anonymous">
-      
-      <title>Dashboard</title>
-   </head>
-   
-   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-     
-           <div class="navbar-nav">
-             <a class="navbar-brand" href="/studentDashboard">Dashboard</a>
-             <a class="nav-item nav-link" href="/studentLogin/logout">Logout</a>
-           </div>
-         </div>
-       </nav>
+<html lang="en">
 
-       <div class="container-fluid">
-         <div class="row">
-             <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
-              <form action="/studentDashboard/course">
-                 <input type="submit" class="nav-item nav-link" value="Your Courses"/>
-              </form>
-              <form action="/studentDashboard/assignment">
-                <input type="submit" class="nav-item nav-link" value="Your Assignments"/>
-             </form>
-             <form action="/studentDashboard/pastCourse">
-                <input type="submit" class="nav-item nav-link" value="Past Courses"/>
-             </form>
-             </div>
-                
-             </div>
+<head>
+   <!-- Meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+   <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <style>
+      .button {
+         width: 80%;
+         margin-top: 20px;
+      }
+   </style>
+   <title>Dashboard</title>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <div class="navbar-nav">
+         <a class="navbar-brand" href="/studentDashboard">Dashboard</a>
+         <a class="nav-item nav-link" href="/studentLogin/logout">Logout</a>
+      </div>
+      </div>
+   </nav>
+
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
+            <form action="/studentDashboard/course">
+               <input type="submit" class="nav-item nav-link button" value="Your Courses" />
+            </form>
+            <form action="/studentDashboard/assignment">
+               <input type="submit" class="nav-item nav-link button" value="Your Assignments" />
+            </form>
+            <form action="/studentDashboard/pastCourse">
+               <input type="submit" class="nav-item nav-link button" value="Past Courses" />
+            </form>
          </div>
-     </div>
-      
+
+      </div>
+   </div>
+   </div>

@@ -1,47 +1,50 @@
-<html lang = "en">
-   <head>
-      <!-- Meta tags -->
-      <meta charset = "utf-8">
-      <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
-      <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
-      <!-- Bootstrap CSS -->
-      <link rel = "stylesheet" 
-         href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-         integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-         crossorigin = "anonymous">
-      
-      <title>Dashboard</title>
-   </head>
-   
-   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-         <a class="navbar-brand" href="/instructorDashboard">Dashboard</a>
-             <a class="nav-item nav-link" href="/instructorLogin/logout">Logout</a>
+<html lang="en">
 
-       </nav>
+<head>
+   <!-- Meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+   <link rel="stylesheet" type="text/css/html" href="css/styles.css" />
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <style>
+      .button {
+         width: 80%;
+         margin-top: 20px;
+      }
+   </style>
+   <title>Dashboard</title>
+</head>
 
-       <div class="container-fluid">
-         <div class="row">
-             <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
-              <form action="/instructorDashboard/courses">
-                 <input type="submit" class="nav-item nav-link" value="Courses Offered"/>
-              </form>
-              <form action="/instructorDashboard/newCourse">
-                <input type="submit" class="nav-item nav-link" value="Create New Course"/>
-             </form>
-             <form action="/instructorDashboard/grading">
-                <input type="submit" class="nav-item nav-link" value="Assignment Grading"/>
-             </form>
-             <form action="/addAssignment/addForm">
-               <input type="submit" class="nav-item nav-link" value="Add Assignment"/>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+      <a class="navbar-brand" href="/instructorDashboard">Dashboard</a>
+      <a class="nav-item nav-link" href="/instructorLogin/logout">Logout</a>
+
+   </nav>
+
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
+            <form action="/instructorDashboard/courses">
+               <input type="submit" class="nav-item nav-link button" value="Courses Offered" />
             </form>
-             <form action="/instructorDashboard/feeds">
-                <input type="submit" class="nav-item nav-link" value="Course Feedbacks"/>
-             </form>
-             
-             </div>
-                
-             </div>
+            <form action="/instructorDashboard/newCourse">
+               <input type="submit" class="nav-item nav-link button" value="Create New Course" />
+            </form>
+            <form action="/instructorDashboard/grading">
+               <input type="submit" class="nav-item nav-link button" value="Assignment Grading" />
+            </form>
+            <form action="/addAssignment/addForm">
+               <input type="submit" class="nav-item nav-link button" value="Add Assignment" />
+            </form>
+            <form action="/instructorDashboard/feeds">
+               <input type="submit" class="nav-item nav-link button" value="Course Feedbacks" />
+            </form>
+
          </div>
-     </div>
-      
+
+      </div>
+   </div>
+   </div>
