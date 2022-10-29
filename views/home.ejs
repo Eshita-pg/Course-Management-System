@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
+<%- include("facultyCourseHeader") -%>
 <form action="./studentLogin/loginForm">
   <input type="submit" value="Student Login" />
 </form>
@@ -16,10 +8,10 @@
 <form action="./adminLogin/loginForm">
   <input type="submit" value="Admin Login" />
 </form>
-<form action="course offered">
+<form action="./facultyCourse/course_instructor">
   <input type="submit" value="Courses Offered" />
 </form>
-<form action="faculty members">
+<form action="./facultyCourse/faculty">
   <input type="submit" value="Faculty Members" />
 </form>
 </body>

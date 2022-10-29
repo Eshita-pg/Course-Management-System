@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Course</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/adminDashboard/newAdminCourse" method="POST">
+        <label for="course_id"><b>Course ID</b></label>
+        <input type="text" placeholder="Enter Course ID" name="course_id" required>
+    <br>
+    <br>
+        <label for="course_name"><b>Course Name</b></label>
+        <input type="text" placeholder="Enter Course Name" name="course_name" required>
+    <br>
+    <br>
+        <label for="course_description"><b>Course Description</b></label>
+        <input type="text" placeholder="Enter Course Description" name="course_description" required>
+    <br>
+    <br>
+        <label for="credits"><b>Course Credits</b></label>
+        <input type="text" placeholder="Enter Course Credits" name="credits" required>
+    <br>
+    <br>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+</body>
+</html>

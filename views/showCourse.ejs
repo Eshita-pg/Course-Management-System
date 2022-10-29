@@ -6,8 +6,9 @@
 
                     <tr>
 
-                        <th>Instructor ID</th>
-                        <th>Instructor Name</th>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Course Credits</th>
 
                     </tr>
                     <% if(data.length> 0)
@@ -16,11 +17,13 @@
                         %>
                         <tr>
                             <td>
-                                <%= getData.instructor_id %>
+                                <%= getData.course_id %>
                             </td>
                             <td>
-                                <%= getData.fname %>
-                                    <%= getData.lname %>
+                                <%= getData.course_name %>
+                            </td>
+                            <td>
+                                <%= getData.credits %>
                             </td>
                         </tr>
                         <% }); } else { %>
@@ -30,10 +33,9 @@
                             <% } %>
 
                 </table><br><br>
-                <form action="/adminDashboard/newInstructor">
-                    <input type="submit" class="btn btn-primary" value="ADD Instructor">
+                <form action="/adminDashboard/newAdminCourse">
+                    <input type="submit" class="btn btn-primary" value="ADD course">
                 </form>
-                
             </div>
         </div>
     </div>
