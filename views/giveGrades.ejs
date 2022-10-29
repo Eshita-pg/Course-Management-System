@@ -1,0 +1,31 @@
+<%- include("instructorDashHeader") -%>
+
+<div class="col offset-3" id="main" style="width: 75%">
+  <h1 style="width: 75%"><%= assignment %></h1>
+  <% data.forEach(function(course){ %>
+  <div class="card" style="width: 80%">
+    <div class="card-body" id="cardBg">
+      <h5 class="card-title"><%= course.student_id %></h5>
+      <br />
+      <% if( !course.grade) { %>
+      <form action="/instructorDashboard/giveGrades" method="POST">
+        <select name="grade">
+          <option value="NA">NA</option>
+          <option value="AA">AA</option>
+          <option value="AB">AB</option>
+          <option value="BB">BB</option>
+          <option value="BC">BC</option>
+        </select>
+        <input type="text" value="<%= course.student_id %>" name="student_id" hidden />
+        <input type="text" value="<%= course.assignment_id %>" name="assignment_id" hidden />
+        <input type="submit" />
+      </form>
+      <% }else { %>
+      <h6 class="card-subtitle mb-2">Grade : <%= course.grade %></h6>
+      <% } %>
+    </div>
+  </div>
+  <% }); %>
+</div>
+
+<%- include("instructorDashFooter") -%>

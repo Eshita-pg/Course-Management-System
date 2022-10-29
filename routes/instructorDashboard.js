@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../connection");
 
+//----------------------SHOW COURSE---------------
 router.get("/courses", function (req, res, next) {
     db.query(
         "SELECT course_id,course_name,credits,COUNT(student_id) AS count FROM course NATURAL JOIN offers NATURAL JOIN takes WHERE instructor_id=? GROUP BY course_id",
@@ -13,9 +14,9 @@ router.get("/courses", function (req, res, next) {
             }
         }
     );
-
 });
 
+//----------------------ADD COURSE------------------
 router.get("/newCourse", function (req, res, next) {
     res.render("newCourse", { layout: false });
 });
@@ -41,26 +42,78 @@ router.post("/newCourse", function (req, res, next) {
         [course_id, req.session.username],
         function (error, results, fields) {
             if (error) throw error;
-            else{
-                res.render("instructorDashboard", { layout: false});
+            else {
+                res.render("instructorDashboard", { layout: false });
                 console.log("Inserted In offers");
             }
         }
     );
 });
 
+//-------------GRADING------------
 router.get("/grading", function (req, res, next) {
     db.query(
-        "SELECT course_id,course_name,performance FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NOT NULL",
+        "SELECT DISTINCT course_id,assignment_id FROM offers NATURAL JOIN have WHERE instructor_id=?",
         [req.session.username],
         function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {
-                res.render("studentPastCourse", { layout: false, data: results });
+                res.render("instructorShowAssn", { layout: false, data: results });
             }
         }
     );
 });
+
+//------------PROBLEM--------
+// router.get("/submissions", function (req, res, next) {
+//     db.query(
+//         "SELECT assignment_id,student_id,grade FROM have WHERE assignment_id=?",
+//         [req.body.assignment_id],
+//         function (error, results, fields) {
+//             if (error) throw error;
+//             if (results.length > 0) {
+//                 res.render("giveGrades", {
+//                     layout: false,
+//                     data: results,
+//                     assignment: req.body.assignment_id,
+//                 });
+//             }
+//         }
+//     );
+// });
+
+router.post("/submissions", function (req, res, next) {
+    db.query(
+        "SELECT assignment_id,student_id,grade FROM have WHERE assignment_id=?",
+        [req.body.assignment_id],
+        function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                res.render("giveGrades", {
+                    layout: false,
+                    data: results,
+                    assignment: req.body.assignment_id,
+                });
+            }
+        }
+    );
+});
+
+router.post("/giveGrades", function (req, res, next) {
+    db.query(
+        "UPDATE have SET grade=?  WHERE assignment_id=? AND student_id=?",
+        [req.body.grade, req.body.assignment_id, req.body.student_id],
+        function (error, results, fields) {
+            if (error) throw error;
+            else {
+                console.log("graded");
+              //  res.redirect("/instructorDashboard/submissions");
+            }
+        }
+    );
+});
+
+//---------------------FEEEDBACK----------------
 router.get("/feeds", function (req, res, next) {
     db.query(
         "SELECT course_id,course_name,performance FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NOT NULL",
