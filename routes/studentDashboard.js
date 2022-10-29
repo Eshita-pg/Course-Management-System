@@ -2,6 +2,10 @@ var express = require("express");
 var router = express.Router();
 var db = require("../connection");
 
+router.get("/", function (req, res, next) {
+  res.render("studentDashboard", { layout: false });
+});
+
 router.get("/course", function (req, res, next) {
   db.query(
     "SELECT course_id,course_name FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NULL",
@@ -11,8 +15,7 @@ router.get("/course", function (req, res, next) {
       if (results.length > 0) {
         console.log(results);
         res.render("studentCourse", { layout: false, data: results });
-      }
-      else {
+      } else {
         res.send("No present enrollments");
       }
     }
@@ -61,7 +64,11 @@ router.post("/content", function (req, res, next) {
 router.post("/getFile", function (req, res, next) {
   db.query(
     "UPDATE have SET status=1 WHERE student_id=? AND assignment_id=? AND course_id=?",
-    [parseInt(req.session.username),req.body.assignment_id,req.body.course_id],
+    [
+      parseInt(req.session.username),
+      req.body.assignment_id,
+      req.body.course_id,
+    ],
     function (error, results, fields) {
       if (error) throw error;
       else {

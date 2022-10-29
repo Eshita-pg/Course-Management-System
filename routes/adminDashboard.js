@@ -2,6 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 var db = require("../connection");
+
+router.get("/", function (req, res, next) {
+    res.render("adminDashboard", { layout: false});
+  });
 router.get("/showStudent", function (req, res, next) {
   db.query(
     "SELECT student_id,fname,lname FROM student",
