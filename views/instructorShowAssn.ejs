@@ -1,23 +1,30 @@
 <%- include("instructorDashHeader") -%>
-      
 
-             <div class="col offset-3"id="main" style="width: 75%;">
-                 <h1 style="width: 75%;">Assignments</h1>
-                 <%  data.forEach(function(course){ %>
-                 <div class="card" style="width: 80%;">
-                  <div class="card-body" id="cardBg">
-                    <h5 class="card-title"><%= course.course_id %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= course.assignment_id %>  </h6>
-                    <form action="/instructorDashboard/submissions" method="POST">
-                        <input type="text" value="<%= course.assignment_id %>" name="assignment_id" hidden>
-                        <input type="submit" value="Submissions">
-                    </form>
-                  </div>
-                </div>
-                <%  }); %>
 
-                
-             </div>
+<div class="col offset-3" id="main" style="width: 75%;">
+  <h1 style="width: 75%;">Assignments </h1> <br>
+    <a class="btn btn-primary" href="/addAssignment/addForm">Add Assignment</a>
+    <a class="btn btn-primary" href="/addAssignment/removeForm">Remove Assignment</a>
+  <% data.forEach(function(course){ %>
+  <div class="card" style="width: 80%;">
+    <div class="card-body" id="cardBg">
+      <h5 class="card-title">
+        <%= course.course_id %>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <%= course.assignment_id %>
+      </h6>
+      <form action="/instructorDashboard/submissions" method="POST">
+        <input type="text" value="<%= course.assignment_id %>" name="assignment_id" hidden>
+        <input type="submit" value="Submissions">
+      </form>
+    </div>
+  </div>
+  <% }); %>
 
-      
+
+</div>
+</div>
+</div>
+
 <%- include("instructorDashFooter") -%>

@@ -12,6 +12,9 @@ router.get("/showStudent", function (req, res, next) {
             if (results.length > 0) {
                 res.render("showStudent", { layout: false, data: results });
             }
+            else {
+                res.send("No Students");
+            }
         }
     );
 });
@@ -157,6 +160,9 @@ router.get("/showCourse", function (req, res, next) {
             if (error) throw error;
             if (results.length > 0) {
                 res.render("showCourse", { layout: false, data: results });
+            }
+            else {
+                res.send("No Course");
             }
         }
     );

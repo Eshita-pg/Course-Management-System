@@ -1,23 +1,27 @@
 <%- include("studentDashHeader") -%>
-      
-<div class="col offset-3"id="main" style="width: 75%;">
-    <h1>Assignments</h1>
-    <%  data.forEach(function(assn){ %>
-    <div class="card" style="width: 100%;">
-     <div class="card-body" id="cardBg">
-       <h5 class="card-title"><%= assn.assignment_id %></h5>
-       <h6 class="card-subtitle mb-2 text-muted"><%= assn.grade %></h6>
-       <h5 class="card-text"><%=  assn.course_id  %></h5>
-       <label for="myfile">Select a file:</label>
-<input type="file" id="myfile" name="myfile">
-     </div>
-   </div>
-   <%  }); %>
 
-   
+<div class="col offset-3" id="main" style="width: 75%">
+  <h1>Assignments</h1>
+  <% data.forEach(function(assn){ %>
+  <div class="card" style="width: 100%">
+    <div class="card-body" id="cardBg">
+      <h5 class="card-title"><%= assn.assignment_id %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= assn.grade %></h6>
+      <h5 class="card-text"><%= assn.course_id %></h5>
+      <% if(!assn.status) { %>
+      <form action="/studentDashboard/getFile" method="POST">
+      <label for="myfile">Select a file:</label>
+      <input type="file" id="myfile" name="myfile" />
+      <input type="text" value="<%= assn.assignment_id %>" name="assignment_id" hidden />
+      <input type="text" value="<%=  assn.course_id  %>" name="course_id" hidden />
+      <input class="btn btn-success btn-sm" type="submit" value="Submit" />
+    </form>
+      <% } else { %>
+      <h6 style="color: green">Submitted</h6>
+      <% } %>
+    </div>
+  </div>
+  <% }); %>
 </div>
-
-
-
 
 <%- include("studentDashFooter") -%>

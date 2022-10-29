@@ -1,0 +1,20 @@
+<%- include("instructorDashHeader") -%>
+      
+
+             <div class="col offset-3"id="main" style="width: 75%;">
+                 <h1 style="width: 75%;">Feedbacks</h1>
+                 <%  data.forEach(function(course){ %>
+                 <div class="card" style="width: 80%;">
+                  <div class="card-body" id="cardBg">
+                    <h5 class="card-title"><%= course.course_id %></h5> <br>
+                    <h6 class="card-subtitle mb-2"><%= course.feedback_message %></h6>
+                  </div>
+                </div>
+                <%  }); %>
+
+                
+             </div>
+         </div>
+     </div>
+      
+<%- include("instructorDashFooter") -%>

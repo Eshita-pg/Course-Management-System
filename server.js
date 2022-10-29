@@ -11,6 +11,7 @@ const instructorRouter = require("./routes/instructorLogin");
 const adminRouter = require("./routes/adminLogin");
 const instructorCourseRouter = require("./routes/instructorDashboard")
 const adminCourseRouter = require("./routes/adminDashboard")
+const addAssnRouter = require("./routes/addAssignment")
 const facultyCourseRouter = require("./routes/facultyCourse")
 
 const flash = require('connect-flash');
@@ -28,6 +29,7 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'));
 
+app.use('/addAssignment',addAssnRouter);
 app.use('/feedback',feedbackRouter);
 app.use('/studentDashboard',studentCourseRouter);
 app.use('/studentLogin', studentRouter);

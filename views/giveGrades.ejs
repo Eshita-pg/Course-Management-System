@@ -7,7 +7,7 @@
     <div class="card-body" id="cardBg">
       <h5 class="card-title"><%= course.student_id %></h5>
       <br />
-      <% if( !course.grade) { %>
+      <% if(course.status && !course.grade) { %>
       <form action="/instructorDashboard/giveGrades" method="POST">
         <select name="grade">
           <option value="NA">NA</option>
@@ -20,8 +20,10 @@
         <input type="text" value="<%= course.assignment_id %>" name="assignment_id" hidden />
         <input type="submit" />
       </form>
-      <% }else { %>
+      <% }else if(course.status && course.grade){ %>
       <h6 class="card-subtitle mb-2">Grade : <%= course.grade %></h6>
+      <% } else { %>
+      <h6 class="card-subtitle mb-2">Not Submitted</h6>
       <% } %>
     </div>
   </div>

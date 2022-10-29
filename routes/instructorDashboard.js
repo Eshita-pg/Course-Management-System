@@ -12,6 +12,9 @@ router.get("/courses", function (req, res, next) {
             if (results.length > 0) {
                 res.render("instructorCourse", { layout: false, data: results });
             }
+            else {
+                res.send("No results");
+            }
         }
     );
 });
@@ -60,31 +63,18 @@ router.get("/grading", function (req, res, next) {
             if (results.length > 0) {
                 res.render("instructorShowAssn", { layout: false, data: results });
             }
+            else {
+                res.send("No Assignments");
+            }
         }
     );
 });
 
-//------------PROBLEM--------
-// router.get("/submissions", function (req, res, next) {
-//     db.query(
-//         "SELECT assignment_id,student_id,grade FROM have WHERE assignment_id=?",
-//         [req.body.assignment_id],
-//         function (error, results, fields) {
-//             if (error) throw error;
-//             if (results.length > 0) {
-//                 res.render("giveGrades", {
-//                     layout: false,
-//                     data: results,
-//                     assignment: req.body.assignment_id,
-//                 });
-//             }
-//         }
-//     );
-// });
+
 
 router.post("/submissions", function (req, res, next) {
     db.query(
-        "SELECT assignment_id,student_id,grade FROM have WHERE assignment_id=?",
+        "SELECT assignment_id,student_id,grade,status FROM have WHERE assignment_id=?",
         [req.body.assignment_id],
         function (error, results, fields) {
             if (error) throw error;
@@ -107,7 +97,7 @@ router.post("/giveGrades", function (req, res, next) {
             if (error) throw error;
             else {
                 console.log("graded");
-              //  res.redirect("/instructorDashboard/submissions");
+              res.render("instructorDashboard" ,  { layout: false});
             }
         }
     );
@@ -116,12 +106,15 @@ router.post("/giveGrades", function (req, res, next) {
 //---------------------FEEEDBACK----------------
 router.get("/feeds", function (req, res, next) {
     db.query(
-        "SELECT course_id,course_name,performance FROM course NATURAL JOIN assigns WHERE student_id=? and performance IS NOT NULL",
+        "SELECT course_id,instructor_id,feedback_message FROM gets WHERE instructor_id=?",
         [req.session.username],
         function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {
-                res.render("studentPastCourse", { layout: false, data: results });
+                res.render("instructorShowFeedback", { layout: false, data: results });
+            }
+            else {
+                res.send("No feedbacks");
             }
         }
     );
@@ -141,5 +134,3 @@ router.post("/content", function (req, res, next) {
 });
 module.exports = router;
 
-//GET INPUT FILES
-//router.post()

@@ -17,7 +17,7 @@ router.get("/course", function (req, res, next) {
 
 router.get("/assignment", function (req, res, next) {
   db.query(
-    "SELECT assignment_id,course_id,grade FROM have WHERE student_id=?",
+    "SELECT assignment_id,course_id,grade,status FROM have WHERE student_id=?",
     [req.session.username],
     function (error, results, fields) {
       if (error) throw error;
@@ -53,7 +53,18 @@ router.post("/content", function (req, res, next) {
     }
   );
 });
-module.exports = router;
 
-//GET INPUT FILES
-//router.post()
+router.post("/getFile", function (req, res, next) {
+  db.query(
+    "UPDATE have SET status=1 WHERE student_id=? AND assignment_id=? AND course_id=?",
+    [parseInt(req.session.username),req.body.assignment_id,req.body.course_id],
+    function (error, results, fields) {
+      if (error) throw error;
+      else {
+        res.render("studentDashboard", { layout: false });
+        console.log("UPDATED");
+      }
+    }
+  );
+});
+module.exports = router;
