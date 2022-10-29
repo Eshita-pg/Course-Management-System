@@ -71,7 +71,6 @@ router.get("/grading", function (req, res, next) {
 });
 
 
-
 router.post("/submissions", function (req, res, next) {
     db.query(
         "SELECT assignment_id,student_id,grade,status FROM have WHERE assignment_id=?",

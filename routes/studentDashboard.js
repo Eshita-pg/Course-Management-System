@@ -9,7 +9,11 @@ router.get("/course", function (req, res, next) {
     function (error, results, fields) {
       if (error) throw error;
       if (results.length > 0) {
+        console.log(results);
         res.render("studentCourse", { layout: false, data: results });
+      }
+      else {
+        res.send("No present enrollments");
       }
     }
   );

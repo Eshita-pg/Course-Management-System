@@ -20,7 +20,7 @@ router.post("/add", function (req, res, next) {
     );
     
     db.query(
-        "SELECT DISTINCT student_id FROM have  WHERE course_id=?",
+        "SELECT DISTINCT student_id,course_id FROM have  WHERE course_id=?",
         [req.body.course_id],
         function (error, results, fields) {
             if (error) throw error;
@@ -29,7 +29,7 @@ router.post("/add", function (req, res, next) {
                 resultArray.forEach(element => {
                     console.log(parseInt(element.student_id));
                     db.query(
-                        "INSERT INTO have (assignment_id,course_id,student_id) values (?,?,?)",
+                        "INSERT INTO have SET assignment_id=?,course_id=?,student_id=?",
                         [req.body.assignment_id,req.body.course_id,parseInt(element.student_id)],
                         function (error, results, fields) {
                             if (error) throw error;

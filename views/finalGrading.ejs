@@ -1,0 +1,32 @@
+<%- include("adminDashHeader") -%>
+
+<div class="col offset-3" id="main" style="width: 75%">
+  <h1 style="width: 75%">Performance</h1>
+  <% data.forEach(function(course){ %>
+  <div class="card" style="width: 80%">
+    <div class="card-body" id="cardBg">
+      <h5 class="card-title"><%= course.student_id %></h5>
+      <h5 class="card-title"><%= course.course_id %></h5>
+      <br />
+      <% if(!course.performance) { %>
+      <form action="/adminDashboard/finalGrading" method="POST">
+        <select name="grade">
+          <option value="NA">NA</option>
+          <option value="AA">AA</option>
+          <option value="AB">AB</option>
+          <option value="BB">BB</option>
+          <option value="BC">BC</option>
+          <option value="CC">CC</option>
+        </select>
+        <input type="text" value="<%= course.student_id %>" name="student_id" hidden />
+        <input type="text" value="<%= course.course_id %>" name="course_id" hidden />
+        <input type="submit" />
+      </form>
+      <% }else if(course.performance){ %>
+      <h6 class="card-subtitle mb-2">Grade : <%= course.performance %></h6>
+      <% } %>
+    </div>
+  </div>
+  <% }); %>
+</div>
+<%- include("adminDashFooter") -%>
