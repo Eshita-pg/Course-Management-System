@@ -44,6 +44,9 @@ router.get("/pastCourse", function (req, res, next) {
       if (results.length > 0) {
         res.render("studentPastCourse", { layout: false, data: results });
       }
+      else {
+        res.send("No Past Courses");
+      }
     }
   );
 });
