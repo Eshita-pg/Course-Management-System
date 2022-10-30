@@ -26,7 +26,7 @@ router.get("/newStudent", function (req, res, next) {
 
 router.post("/newStudent", function (req, res, next) {
   const student_id = parseInt(req.body.student_id);
-  const password = req.body.fname + "@" + req.body.instructor_id;
+  const password = req.body.fname + "@" + req.body.student_id;
   const fname = req.body.fname;
   const lname = req.body.lname;
   const street = req.body.street;
@@ -155,6 +155,7 @@ router.post("/assignStudentbyAdmin", function (req, res, next) {
     function (error, results, fields) {
       if (error) {
         res.send('<h2>Selected Student is already Enrolled in Selected Course!!</h2>');
+        console.log( error);
       } else {
         console.log("Inserted In takes");
         db.query(
@@ -162,7 +163,9 @@ router.post("/assignStudentbyAdmin", function (req, res, next) {
           [student_id, course_id, req.session.username],
           function (error, results, fields) {
             if (error) {
+
                 res.send('<h2>Selected Student is already Enrolled in Selected Course!!</h2>');
+                console.log( error);
             } else {
               res.render("adminDashboard", { layout: false });
               console.log("Inserted In assigns");

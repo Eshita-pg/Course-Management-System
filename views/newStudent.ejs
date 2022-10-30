@@ -1,32 +1,41 @@
 <%- include("adminDashHeader") -%>
-    <div class="container">
-        <form action="/adminDashboard/newStudent" method="POST">
-        <label for="student_id"><b>Student ID</b></label>
-        <input type="text" placeholder="Enter Student ID" name="student_id" required>
-    <br>
-    <br>
-        <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Enter Student's First Name" name="fname" required>
-    <br>
-    <br>
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Student's Last Name" name="lname" required>
-    <br>
-    <br>
-        <label for="street"><b>Street Name</b></label>
-        <input type="text" placeholder="Enter Student's Street Name" name="street" required>
-    <br>
-    <br>
-        <label for="state"><b>State</b></label>
-        <input type="text" placeholder="Enter Student's State Name" name="state" required>
-    <br>
-    <br>
-        <label for="pincode"><b>PINCODE</b></label>
-        <input type="text" placeholder="Enter Student's State Name" name="pincode" required>
-    <br>
-    <br>
-        <input type="submit" value="Submit">
-      </div>
-    </form>
+<div class="container" style="margin-left:500px ;margin-top:20px;">
+  <table>
+  <form action="/adminDashboard/newStudent" method="POST">
+
+    <tr>
+      <td><label for="student_id"><b>Student ID:</b></label></td>
+      <td><input type="text" placeholder="Enter Student ID" name="student_id" required></td>
+    </tr>
+    <tr>
+      <td><label for="fname"><b>First Name:</b></label></td>
+      <td><input type="text" placeholder="First Name" name="fname" required></td>
+    </tr>
+    <tr>
+      <td><label for="lname"><b>Last Name:</b></label></td>
+      <td><input type="text" placeholder="Last Name" name="lname" required></td>
+    </tr>
+    <tr>
+      <td><label for="street"><b>Street Name:</b></label></td>
+      <td><input type="text" placeholder="Street Name" name="street" required></td>
+    </tr>
+    <tr>
+      <td><label for="state"><b>State:</b></label></td>
+      <td><input type="text" placeholder="State Name" name="state" required></td>
+    </tr>
+    <tr>
+      <td><label for="pincode"><b>PINCODE:</b></label></td>
+      <td><input type="text" placeholder="PINCODE" name="pincode" required></td>
+    </tr>
+
+  </table>
+  <br>
+  <input type="submit" value="Submit">
+  
+
+  </form>
+</div>
+
 </body>
+
 </html>
